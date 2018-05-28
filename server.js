@@ -4,6 +4,7 @@ const   express = require('express'),
         bodyParser = require ('body-parser');
 
 
+const scrape = require ('./scripts/scrape');
 
 const PORT = process.env.PORT || 3000;
 const app = express ();
@@ -19,7 +20,9 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {
     useMongoClient: true
 });
+type = 'kitten';
 
+scrape(type)
 app.listen(PORT, function () {
     console.log("Listening on port: " + PORT);
 });

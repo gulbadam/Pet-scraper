@@ -1,7 +1,9 @@
 const cheerio = require('cheerio');
 const axios = require('axios');
-let type = "kitten"
+
 const scrape = (type) => {
+    type = 'kitten';
+
     url = "https://sacramento.craigslist.org/search/pet?query=" + type
     console.log(url)
     return axios.get(url).then((res) => {
@@ -17,7 +19,8 @@ const scrape = (type) => {
                     title: title,
                     link: link,
                     date: date,
-                    city: city
+                    city: city,
+                    type: type
                 };
                 posts.push(dataAdd);
             }
@@ -27,7 +30,7 @@ const scrape = (type) => {
         return posts
     })
 }
-scrape(type)
+
 
 // let scraper = {
 

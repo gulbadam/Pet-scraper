@@ -20,9 +20,9 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {
     useMongoClient: true
 });
-type = 'kitten';
+category = 'kitten';
 
-scrape(type)
+scrape(category)
 app.listen(PORT, function () {
     console.log("Listening on port: " + PORT);
 });

@@ -5,7 +5,7 @@ const PostSchema = new Schema ({
     pid:{
         type: String,
         required: true,
-        trim: true,
+        //trim: true,
         unique: true
     },
     title : {
@@ -16,26 +16,26 @@ const PostSchema = new Schema ({
     link: {
         type: String,
         required: true,
-        trim: true
+        //trim: true
     },
     city: {
         type: String,
-        trim: true
+        
 
     },
     category: {
         type: String,
         required: true,
-        trim: true
+        //trim: true
     },
-    posted_date: {
+    date: {
         type: String,
         required: true,
         trim: true
 
     },
     createdAt: {
-        type: Date,
+      type: Date,
         default: Date.now
     },
     saved: {

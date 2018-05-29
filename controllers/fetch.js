@@ -1,41 +1,47 @@
 const db = require ('../models');
 const scrape = require ('../scripts/scrape');
+
 module.exports = {
     scrapeKittens:(req, res)=>{
-        return scrape(kitten)
-        .then((pst)=>{
-            return db.Post.create(pst);
+        let category = "kitten"
+        return scrape(category)
+        .then(function (posts){
+            console.log(posts)
+            return db.Post.create(posts);
         })
-        .then((dbPost) =>{
-            if (dbPost.length===0) {
+            .then((petsdb) =>{
+                if (petsdb.length===0) {
                 res.json({
                     message: "No new post today"
                 })
             }else{
                 res.json({
-                    message: "Added " + dbPost.length + " new posts!"
+                    message: "Added " + petsdb.length + " new posts!"
                 });
             }
         })
         .catch((err)=>{
+            console.log(err)
             res.json({
                 message: "Scrape complete!!"  
             })
         })
     },
     scrapePuppies: (req, res) => {
-        return scrape(puppy)
-            .then((pst) => {
-                return db.Post.create(pst);
+        let category = 'puppy';
+
+        return scrape(category)
+            .then((posts) => {
+                return db.Post.create(posts);
             })
-            .then((dbPost) => {
-                if (dbPost.length === 0) {
+            .then((petsdb) => {
+                if (petsdb.length === 0) {
                     res.json({
                         message: "No new post today"
                     })
                 } else {
                     res.json({
-                        message: "Added " + dbPost.length + " new posts!"
+                        message: "Added " + petsdb.length + " new posts!"
                     });
                 }
             })

@@ -26,15 +26,6 @@ require('./routes/api-routes.js')(app);
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/petsdb';
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI)
-// app.get("/", (req, res) => {
-//     db.Post.find({})
-//         .then((dbPost) => {
-//             res.json(dbPost)
-//         })
-//         .catch(function (err) {
-//             res.json(err);
-//         })
-//     })
     app.listen(PORT, function () {
         console.log("App running on port " + PORT + "!");
     })

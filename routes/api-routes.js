@@ -90,6 +90,66 @@ module.exports = (app) => {
             res.json(err)
         })
     })
+    app.get("/api/category/puppies", (req, res) => {
+        db.Post.find({ category: "puppy" })
+            .then((dbKitten) => {
+                res.json(dbKitten)
+            })
+            .catch((err) => {
+                res.json(err)
+            })
+    })
+    
+    app.put("/api/posts/save/:id", (req, res) => {
+        db.Post.update({ _id: req.params.id }, { saved: false })
+            .then((dbPost) => {
+                res.json(dbPost)
+            })
+            .catch((err) => {
+                res.json(err)
+            })
+    })
+    app.delete("/api/posts/delete/:id", (req, res)=>{
+        db.Post.findByIdAndRemove({'_id': req.params.id}, (err, pst)=>{
+            if(err) res.json(err);
+            for (let i = 0; i < pst.length; i++) {
+                db.Note.remove({ _id: pst.notes[i] }).exec();
+                
+            }
+            res.json(pst);
+        })
+    })
+    app.get ("/api/posts/:id", (req, res)=>{
+        db.Post.findOne({ _id: req.params.id })
+            .then((dbPost) => { res.json(dbPost)})
+            .catch((err) => {
+                res.json(err);
+    })
+})
+
+    app.get("/api/posts/notes/:id",(req, res)=>{
+        db.Post.findOne({ _id: req.params.id})
+        .populate("notes")
+        .then((dbPost)=>{
+            res.json(dbPost)
+        })
+            .catch( (err)=> {
+                res.json(err);
+    })
+})
+    app.post("/api/posts/notes/:id", (req, res)=>{
+        db.Note.create(req.body)
+        .then((dbNote)=>{
+            return db.Post.findByIdAndUpdate({_id: req.params.id}, {$push: {notes: dbNote._id}}, {new: true})
+        })
+        .then((dbN)=>{
+            res.json(dbN)
+        })
+            .catch((err) => {
+                res.json(err);
+    })
+})
+
 
  app.get("/",(req, res)=>{
      

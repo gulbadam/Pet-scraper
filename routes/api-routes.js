@@ -1,11 +1,8 @@
-
-
 const db =require("../models");
 const scrape = require ('../scripts/scrape.js');
 
-
-
 module.exports = (app) => {
+    //scrape kittens
     app.get('/api/kittens', (req, res)=>{
         let category = "kitten"
         scrape(category)
@@ -18,31 +15,30 @@ module.exports = (app) => {
                     data, 
                     {ordered: false}, (err, posts)=>{
                 if (err) {
-                     res.json({
-                           scraped: data.length,
-                             stored: err.result.nInserted
-                         })
+                    res.json({
+                        scraped: data.length,
+                        stored: err.result.nInserted
+                        })
                     }
                     else{
                         res.json({
-                             scraped: data.length,
-                             stored: posts.insertedCount
+                            scraped: data.length,
+                            stored: posts.insertedCount
                         });
-                     }
-                  });
+                    }
+                });
                 }
                 else{
-                 res.json({ scraped: 0, stored: 0 });
+                res.json({ scraped: 0, stored: 0 });
                 } 
-         })
+        })
         .catch ((error) => {
             console.log (`caught the error: ${error}`);
-
-    res.json({
-        message: "error"})
+            res.json({
+            message: "error"})
         })
-            
-})
+    })
+    //scrape puppies
     app.get('/api/puppies', (req, res) => {
         let category = "puppy"
         scrape(category)
@@ -81,6 +77,7 @@ module.exports = (app) => {
             })
 
     })
+    //render kittens category
     app.get("/api/category/kittens", (req, res)=>{
         db.Post.find({category: "kitten"})
         .then((dbKitten)=>{
@@ -90,6 +87,7 @@ module.exports = (app) => {
             res.json(err)
         })
     })
+    //render puppies category
     app.get("/api/category/puppies", (req, res) => {
         db.Post.find({ category: "puppy" })
             .then((dbKitten) => {
@@ -99,7 +97,7 @@ module.exports = (app) => {
                 res.json(err)
             })
     })
-    
+    //save post
     app.put("/api/posts/save/:id", (req, res) => {
         db.Post.update({ _id: req.params.id }, { saved: false })
             .then((dbPost) => {
@@ -109,6 +107,7 @@ module.exports = (app) => {
                 res.json(err)
             })
     })
+    //delete post and notes
     app.delete("/api/posts/delete/:id", (req, res)=>{
         db.Post.findByIdAndRemove({'_id': req.params.id}, (err, pst)=>{
             if(err) res.json(err);
@@ -119,14 +118,14 @@ module.exports = (app) => {
             res.json(pst);
         })
     })
-    app.get ("/api/posts/:id", (req, res)=>{
-        db.Post.findOne({ _id: req.params.id })
-            .then((dbPost) => { res.json(dbPost)})
-            .catch((err) => {
-                res.json(err);
-    })
-})
-
+//     app.get ("/api/posts/:id", (req, res)=>{
+//         db.Post.findOne({ _id: req.params.id })
+//             .then((dbPost) => { res.json(dbPost)})
+//             .catch((err) => {
+//                 res.json(err);
+//     })
+// })
+//show post and notes
     app.get("/api/posts/notes/:id",(req, res)=>{
         db.Post.findOne({ _id: req.params.id})
         .populate("notes")
@@ -137,6 +136,7 @@ module.exports = (app) => {
                 res.json(err);
     })
 })
+//add notes
     app.post("/api/posts/notes/:id", (req, res)=>{
         db.Note.create(req.body)
         .then((dbNote)=>{
@@ -149,17 +149,34 @@ module.exports = (app) => {
                 res.json(err);
     })
 })
+//delete note
+app.delete("/api/notes/:n_id",(req, res)=>{
+    let p_Id= req.body.p_id;
+    let n_Id =req.params.n_id;
+    db.Note.remove({_id: n_Id})
+    .then((dbNote)=>{
+        return db.Post.findOneAndUpdate({_id: p_Id}, {$pull: {notes: n_Id}})
 
+    })
+    .then((result)=>{
+        res.json(result)
+    })
+    .catch((err)=>{
+        res.json(err)
+    })
 
- app.get("/",(req, res)=>{
+})
+
+//show all
+//  app.get("*",(req, res)=>{
      
-db.Post.find({})
-    .then((dbPost)=>{
-        res.json(dbPost)
-     })
-    .catch (function(err) {
-       res.json(err);
-})
+// db.Post.find({})
+//     .then((dbPost)=>{
+//         res.json(dbPost)
+//      })
+//     .catch (function(err) {
+//        res.json(err);
+// })
 
-})
+// })
 }

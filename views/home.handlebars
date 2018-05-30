@@ -1,15 +1,15 @@
 <div class="container">
-    <h1>home</h1>
+   
     {{#if post}}
-    <p>kitten</p>
+   
     
-    
-<article class="message is-primary is-small">
-    {{#each post}}
+    <div class="box">
+         {{#each post}}
+<article class="message is-info is-small" id="msg-box">
     <div class="message-header">
         <p>{{this.title}}</p>
-         <div class="level-right">
-        <a class="button is-success is-rounded is-small">
+        <div class="level-right">
+            <a class="button is-success is-rounded is-small">
             <span class="icon is-small">
                 <i class="fas fa-check"></i>
             </span>
@@ -25,11 +25,13 @@
        <p>{{this.city}}</p>
         <p>{{this.date}}</p>
         </div>
-    
-    
+    </article>
+     {{/each}}
 
-    {{/each}}
-</article>
+</div>
      {{else}} 
-     {{/if}}
+     <div class="container is-fluid level-item">
+<img src="/assets/images/cd.jpg" alt="cat&dog">
+</div>
+{{/if}}
 </div>

@@ -44,11 +44,11 @@ const PostSchema = new Schema ({
     },
     notes: [{
     type: Schema.Types.ObjectId,
-    ref: 'Note',
+   ref: 'Note',
     },
-    ]
+   ]
 
 })
-var Post = mongoose.model ('Post', PostSchema);
+const Post = mongoose.model ('Post', PostSchema);
 
 module.exports = Post;

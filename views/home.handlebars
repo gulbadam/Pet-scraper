@@ -18,13 +18,13 @@
         </a>
         
          {{/unless}}
-        <a class="button is-primary is-rounded is-small" id="add-note">
+        <a href="/post/notes/{{this._id}}" class="button is-primary is-rounded is-small" data-id="{{this._id}}" id="add_note">
             <span class="icon is-small">
                 <i class="fas fa-comment-alt"></i>
             </span>
             <span>Note</span>
         </a>
-        <button class="delete" aria-label="delete" data-id="{{this._id}}"></button>
+        <button id="delete-post"class="delete" aria-label="delete" data-id="{{this._id}}"></button>
         </div>
         </div>
     
@@ -44,7 +44,7 @@
 </div>
 {{/if}}
 </div>
-<div class="modal">
+<div id="post-mod" class="modal">
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
@@ -52,7 +52,17 @@
             <button class="delete" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
-            <!-- Content ... -->
+            <div class="field">
+                <label class="label">Note{{this._id}} 1</label>
+                <div class="control">
+                    <textarea class="textarea" placeholder="Textarea" required="required"></textarea>
+                </div>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link" data-id="{{this._id}}" id="subNote">Submit {{this._id}}</button>
+                    </div>
+                </div>
+    
         </section>
         <footer class="modal-card-foot">
             <button class="button is-success">Save changes</button>
@@ -62,8 +72,17 @@
 </div>
 <div  id="scr-mode" class="modal">
     <div class="modal-background"></div>
-    <div class="modal-content" id="scr-cont">
-        hello
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Modal title</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+           
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success">Save changes</button>
+            <button class="button">Cancel</button>
+        </footer>
     </div>
-    <button class="modal-close is-large" aria-label="close"></button>
 </div>

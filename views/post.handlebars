@@ -1,0 +1,51 @@
+
+<div class="container">
+    <div class="box">
+<div class="card">
+     {{#if post}}
+    <header class="card-header">
+        <p class="card-header-title">
+            {{post.title}}
+            
+        </p>
+        
+    </header>
+    {{#if post.notes}}
+     {{#each post.notes}}
+    <div class="card-content">
+        <div class="content">
+            <article class="message is-info">
+                <button  id="delete-note" class="delete" aria-label="delete" data-id="{{this._id}}"></button>
+                <div class="message-body">
+                    <div>{{this.body}}
+                    </div>
+                    <div>{{this.updatedAt}}
+                    
+                </div>
+                
+            </article>
+            
+            
+        </div>
+    </div>
+     {{/each}}
+     {{/if}}
+     <div class="box">
+    <form action="/api/posts/notes/{{post._id}}" method="POST">
+    <div class="field is-small">
+        <label class="label">Note</label>
+        <div class="control">
+            <textarea name="body" class="textarea" placeholder="Textarea" required="required"></textarea>
+        </div>
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-link" data-id="{{post._id}}" id="subNote">Submit</button>
+            </div>
+        </div>
+        </div>
+        </form>
+     {{/if}}
+</div>
+</div>
+</div>
+</div>

@@ -11,7 +11,7 @@ $(document).ready(()=>{
         })
 
     })
-    $(".delete").on("click", function(){
+    $("#delete-post").on("click", function(){
         let id = $(this).attr("data-id");
         console.log (id);
 
@@ -43,8 +43,8 @@ $(document).ready(()=>{
             }
             
         })
-             .catch(function (err) {
-                 console.log(err.responseJSON);
+        .catch(function (err) {
+        console.log(err.responseJSON);
              });
     })
     $("#scrape-puppy").on("click", function () {
@@ -56,13 +56,13 @@ $(document).ready(()=>{
             console.log("working")
             if (data) {
                 console.log("data" + data)
-                $('#scr-cont').empty();
+                $('#modal-card-body').empty();
 
                 $('#scr-mode').addClass('is-active');
 
                 let scraped = $('<div>').addClass().text(`Scraped posts: ${data.scraped},`);
                 let saved = $('<div>').addClass().text(`Saved new posts: ${data.stored}.`);
-                $("#scr-cont").append(scraped).append(saved)
+                $(".modal-card-body").append(scraped).append(saved)
                 //$("#scr-mode").modal("toggle");
             }
 
@@ -76,4 +76,16 @@ $(document).ready(()=>{
         location.reload();
         
     })
+ 
+    $("#subNote").on("click", function(){
+       let p_Id= $(this).attr("data-id")
+       console.log(p_Id)
+       addNote(p_id);
+
+    })
+    
+    
+
+
+    
 })

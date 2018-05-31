@@ -134,8 +134,10 @@ module.exports = (app) => {
     app.get("/api/posts/notes/:id",(req, res)=>{
         db.Post.findOne({ _id: req.params.id})
         .populate("notes")
-        .then((dbPost)=>{
-            res.json(dbPost)
+        .then((post)=>{
+            
+            res.render ('post', {post: post});
+
         })
             .catch( (err)=> {
                 res.json(err);
@@ -147,9 +149,15 @@ module.exports = (app) => {
         .then((dbNote)=>{
             return db.Post.findByIdAndUpdate({_id: req.params.id}, {$push: {notes: dbNote._id}}, {new: true})
         })
-        .then((dbN)=>{
-            res.json(dbN)
+        .then((dbNote)=>{
+            db.Post.findOne({ _id: req.params.id })
+            .populate("notes")
+                .then((post) => {
+
+                    res.render('post', { post: post });
+        
         })
+    })
             .catch((err) => {
                 res.json(err);
     })

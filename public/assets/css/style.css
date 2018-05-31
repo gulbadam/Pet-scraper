@@ -15,6 +15,7 @@
 }
 #msg-box{
     font-size: 1rem;
+    box-shadow: 12px 12px 2px 1px rgba(88, 232, 105, 0.3);
 }
 #head{
     color:rgb(47, 179, 231);

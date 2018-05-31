@@ -11,7 +11,7 @@ $(document).ready(()=>{
         })
 
     })
-    $("#delete-post").on("click", function(){
+    $(".del-post").on("click", function(){
         let id = $(this).attr("data-id");
         console.log (id);
 
@@ -77,12 +77,6 @@ $(document).ready(()=>{
         
     })
  
-    $("#subNote").on("click", function(){
-       let p_Id= $(this).attr("data-id")
-       console.log(p_Id)
-       addNote(p_id);
-
-    })
     
     
 

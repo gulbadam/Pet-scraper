@@ -9,7 +9,7 @@
     <div class="message-header">
         <p>{{this.title}}</p>
         <div class="level-right">
-            <a class="button is-success is-rounded is-small">
+            <a class="button is-success is-rounded is-small" id="delete-post">
             <span class="icon is-small">
                 <i class="fas fa-check"></i>
             </span>
@@ -21,7 +21,7 @@
     
     <div class="message-body">
        
-        <a>{{this.link}}</a> 
+        <a href="{{this.link}}" target="_blank">{{this.title}}</a> 
        <p>{{this.city}}</p>
         <p>{{this.date}}</p>
         </div>

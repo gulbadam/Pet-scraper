@@ -15,27 +15,27 @@
 
     <div id="navbarExampleTransparentExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item" href="https://bulma.io/">
-                Home
-            </a>
             <div class="navbar-item">
-            <a class="button is-info">Scrape Kittens</a>
+            <a class="button is-info" id="scrape-kitten">Scrape Kittens</a>
             </div>
             <div class="navbar-item">
-                <a class="button is-info">Scrape Puppies</a>
+                <a class="button is-info" id="scrape-puppy">Scrape Puppies</a>
             </div>
+        
         </div>
-        <div>{{head}}</div>
+        <div class="navbar-item">
+            <div> <p class="title is-2 is-spaced">{{head}}</p></div>
+        </div>
 
         <div class="navbar-end">
         <div class="navbar-item">
-            <a class="button is-primary">Saved</a>
+            <a class="button is-primary" href="/saved" id="saved">Saved</a>
         </div>
         <div class="navbar-item">
-            <a class="button is-link">Kittens</a>
+            <a class="button is-link" href="/kittens" id="kittens">Kittens</a>
         </div>
         <div class="navbar-item">
-            <a class="button is-link">Puppies</a>
+            <a class="button is-link" href="/puppies" id="puppies">Puppies</a>
         </div>
         </div>
     </div>

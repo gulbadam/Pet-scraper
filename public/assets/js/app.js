@@ -13,7 +13,7 @@ $(document).ready(()=>{
     })
     $(".del-post").on("click", function(){
         let id = $(this).attr("data-id");
-        console.log (id);
+        console.log(id);
 
         $.ajax({
             url: "/api/posts/delete/"+id,
@@ -23,22 +23,32 @@ $(document).ready(()=>{
             location.reload()
         })
     })
-    $("#scrape-kitten").on("click", function(){
-        //console.log("ckicked");
-        
+    $(".del-note").on("click", function () {
+        let p_id = $(this).attr("data-post-id");
+        let n_id = $(this).data("id");
+        console.log("p"+p_id);
+        console.log("n"+n_id);
 
-         //$("#scr-cont").empty();
+        $.ajax({
+            url: '/api/note/delete/' + n_id,
+            method: "DELETE"
+        })
+            .done(() => {
+                location.reload()
+            })
+    })
+    $("#scrape-kitten").on("click", function(){
          $.get("/api/kittens", function(data){
              console.log("working")
             if(data){
                 console.log("data"+data)
-                $ ('#scr-cont').empty ();
+                $('#modal-card-body').empty();
 
                 $('#scr-mode').addClass('is-active');
 
                 let scraped = $('<div>').addClass().text(`Scraped posts: ${data.scraped},`);
                 let saved = $('<div>').addClass().text(`Saved new posts: ${data.stored}.`);
-                $("#scr-cont").append(scraped).append(saved)
+                $(".modal-card-body").append(scraped).append(saved)
                 //$("#scr-mode").modal("toggle");
             }
             
@@ -48,10 +58,7 @@ $(document).ready(()=>{
              });
     })
     $("#scrape-puppy").on("click", function () {
-        //console.log("ckicked");
-
-
-        //$("#scr-cont").empty();
+       
         $.get("/api/puppies", function (data) {
             console.log("working")
             if (data) {
@@ -71,7 +78,7 @@ $(document).ready(()=>{
                 console.log(err.responseJSON);
             });
     })
-    $(".modal-close").on("click", function () {
+    $(".mod-close").on("click", function () {
         $('#scr-mode').removeClass('is-active');
         location.reload();
         

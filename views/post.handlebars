@@ -15,12 +15,15 @@
     <div class="card-content">
         <div class="content">
             <article class="message is-info">
-                <button  id="delete-note" class="delete" aria-label="delete" data-id="{{this._id}}"></button>
+                <button class="delete del-note" aria-label="delete" data-id="{{this._id}}" data-post-id="{{post._id}}"></button>
                 <div class="message-body">
                     <div>{{this.body}}
                     </div>
                     <div>{{this.updatedAt}}
                     
+                </div>
+                <div>{{this._id}}
+                
                 </div>
                 
             </article>

@@ -15,12 +15,17 @@ module.exports = (app) => {
                     data, 
                     {ordered: false}, (err, posts)=>{
                 if (err) {
+                    console.log ('err' + data.length);
+                    console.log('err' + err.result.nInserted)
+
                     res.json({
+                        
                         scraped: data.length,
                         stored: err.result.nInserted
                         })
                     }
                     else{
+                        console.log("Data"+data)
                         res.json({
                             scraped: data.length,
                             stored: posts.insertedCount

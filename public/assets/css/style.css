@@ -10,3 +10,9 @@
 .footer{
     height: 1rem;
 }
+#msg-box{
+    font-size: 1rem;
+}
+#head{
+    color:rgb(47, 179, 231);
+}

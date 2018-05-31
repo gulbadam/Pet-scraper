@@ -26,10 +26,10 @@ module.exports=(app)=>{
     app.get ('/saved', (req, res) => {
         db.Post.find({ saved: true }, [], { sort: { date: -1 } })
         .then ((post) => {
-        res.render ('posts', {post: post, head: "Saved Posts"});
-        }).catch (err => {
+        res.render ('home', {post: post, head: "Saved Posts"});
+        }).catch ((err) => {
         res.render ('posts', {error: err});
-        });
+        })
 });
 
 

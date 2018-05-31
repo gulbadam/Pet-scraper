@@ -9,13 +9,22 @@
     <div class="message-header">
         <p>{{this.title}}</p>
         <div class="level-right">
-            <a class="button is-success is-rounded is-small" id="delete-post">
+            {{#unless this.saved}}
+            <a class="button is-primary is-rounded is-small save-post" data-id="{{this._id}}">
             <span class="icon is-small">
                 <i class="fas fa-check"></i>
             </span>
             <span>Save</span>
         </a>
-        <button class="delete" aria-label="delete"></button>
+        
+         {{/unless}}
+        <a class="button is-primary is-rounded is-small" id="add-note">
+            <span class="icon is-small">
+                <i class="fas fa-comment-alt"></i>
+            </span>
+            <span>Note</span>
+        </a>
+        <button class="delete" aria-label="delete" data-id="{{this._id}}"></button>
         </div>
         </div>
     
@@ -34,4 +43,20 @@
 <img src="/assets/images/cd.jpg" alt="cat&dog">
 </div>
 {{/if}}
+</div>
+<div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Modal title</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <!-- Content ... -->
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success">Save changes</button>
+            <button class="button">Cancel</button>
+        </footer>
+    </div>
 </div>

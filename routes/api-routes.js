@@ -99,7 +99,7 @@ module.exports = (app) => {
     })
     //save post
     app.put("/api/posts/save/:id", (req, res) => {
-        db.Post.update({ _id: req.params.id }, { saved: false })
+        db.Post.update({ _id: req.params.id }, { saved: true })
             .then((dbPost) => {
                 res.json(dbPost)
             })
@@ -111,10 +111,10 @@ module.exports = (app) => {
     app.delete("/api/posts/delete/:id", (req, res)=>{
         db.Post.findByIdAndRemove({'_id': req.params.id}, (err, pst)=>{
             if(err) res.json(err);
-            for (let i = 0; i < pst.length; i++) {
-                db.Note.remove({ _id: pst.notes[i] }).exec();
+            //for (let i = 0; i < pst.notes.length; i++) {
+                //db.Note.remove({ _id: pst.notes[i] }).exec();
                 
-            }
+            //}
             res.json(pst);
         })
     })

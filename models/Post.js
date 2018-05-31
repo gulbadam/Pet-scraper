@@ -35,7 +35,7 @@ const PostSchema = new Schema ({
 
     },
     createdAt: {
-      type: Date,
+        type: Date,
         default: Date.now
     },
     saved: {

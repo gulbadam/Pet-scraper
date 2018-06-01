@@ -1,5 +1,6 @@
 # Pet-scraper
 App scrapes search results from the https://sacramento.craigslist.org/
+
 Technologies: axios, cheerio, express, express-handlebars, mongoose and Bulma CSS framework (https://bulma.io/)
 
 

@@ -8,20 +8,20 @@ module.exports = (app) => {
         scrape(category)
         .then((data)=>{
             if (data && data.length){
-                console.log(data.length)
+                //console.log(data.length)
                 db.Post.collection.insertMany(
                     data, 
                     {ordered: false}, (err, posts)=>{
                 if (err) {
-                    console.log ('err' + data.length);
-                    console.log('err' + err.result.nInserted)
+                    //console.log (data.length);
+                    //console.log(err.result.nInserted)
                     res.json({
                         scraped: data.length,
                         stored: err.result.nInserted
                         })
                     }
                     else{
-                        console.log("Data"+data)
+                        //console.log("Data"+data)
                         res.json({
                             scraped: data.length,
                             stored: posts.insertedCount
@@ -44,10 +44,8 @@ module.exports = (app) => {
         let category = "puppy"
         scrape(category)
             .then((data) => {
-                console.log("?????????????????????")
-                console.log(data)
                 if (data && data.length) {
-                    console.log(data.length)
+                    //console.log(data.length)
                     db.Post.collection.insertMany(
                         data,
                         { ordered: false }, (err, posts) => {
@@ -112,10 +110,7 @@ module.exports = (app) => {
     app.delete("/api/posts/delete/:id", (req, res)=>{
         db.Post.findByIdAndRemove({'_id': req.params.id}, (err, pst)=>{
             if(err) res.json(err);
-            //for (let i = 0; i < pst.notes.length; i++) {
-                //db.Note.remove({ _id: pst.notes[i] }).exec();
-                
-            //}
+            
             res.json(pst);
         })
     })

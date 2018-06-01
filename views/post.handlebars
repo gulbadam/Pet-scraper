@@ -2,39 +2,30 @@
 <div class="container">
     <div class="box">
 <div class="card">
-     {{#if post}}
+    {{#if post}}
     <header class="card-header">
         <p class="card-header-title">
             {{post.title}}
-            
         </p>
-        
-    </header>
+        </header>
     {{#if post.notes}}
-     {{#each post.notes}}
+    {{#each post.notes}}
     <div class="card-content">
         <div class="content">
             <article class="message is-info">
-                <button class="delete del-note" aria-label="delete" data-id="{{this._id}}" data-post-id="{{post._id}}"></button>
+                <!--<button class="delete del-note" aria-label="delete" data-id="{{this._id}}" data-post-id="{{post._id}}"></button>-->
                 <div class="message-body">
                     <div>{{this.body}}
                     </div>
                     <div>{{this.updatedAt}}
-                    
-                </div>
-                <div>{{this._id}}
-                
-                </div>
-                
-            </article>
-            
-            
-        </div>
+                    </div>
+                </article>
+            </div>
     </div>
-     {{/each}}
-     {{/if}}
-     <div class="box">
-    <form action="/api/posts/notes/{{post._id}}" method="POST">
+    {{/each}}
+    {{/if}}
+    <div class="box">
+        <form action="/api/posts/notes/{{post._id}}" method="POST">
     <div class="field is-small">
         <label class="label">Note</label>
         <div class="control">
@@ -47,8 +38,33 @@
         </div>
         </div>
         </form>
-     {{/if}}
+        
+    {{/if}}
 </div>
 </div>
 </div>
+</div>
+<div  id="scr-mode" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+        <button class="delete mod-close" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+        </section>
+        <footer class="modal-card-foot">
+        </footer>
+    </div>
+</div>
+<div  id="scr-mode" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+        <button class="delete mod-close" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+        </section>
+        <footer class="modal-card-foot">
+        </footer>
+    </div>
 </div>

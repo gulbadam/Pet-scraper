@@ -41,8 +41,8 @@ const scrape = (category) => {
                 // };
                 // posts.push(dataAdd);
             //}
-            console.log(pst)
-            console.log("______________________________________")
+            //console.log(pst)
+            //console.log("______________________________________")
             pstArr.push(pst)
             }
         

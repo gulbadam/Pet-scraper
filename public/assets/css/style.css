@@ -15,21 +15,16 @@
 }
 #msg-box{
     font-size: 1rem;
-    box-shadow: 12px 12px 2px 1px rgba(88, 232, 105, 0.3);
+    box-shadow: 12px 12px 2px 1px rgba(111, 155, 116, 0.242);
 }
 #head{
     color:rgb(47, 179, 231);
 }
-.modal{
-   
-   background-color: white;
-   /* Fallback color */
+.box {
+    margin-bottom: 5rem;
+}
+.message-body {
+    font-size: 1rem;
+    box-shadow: 12px 12px 2px 1px rgba(111, 155, 116, 0.242);
 
-   
-   
-   /* Stay in place */
-
-
-   padding-top: 100px
-   
 }

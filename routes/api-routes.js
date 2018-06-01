@@ -7,8 +7,6 @@ module.exports = (app) => {
         let category = "kitten"
         scrape(category)
         .then((data)=>{
-            console.log("?????????????????????")
-            console.log(data)
             if (data && data.length){
                 console.log(data.length)
                 db.Post.collection.insertMany(
@@ -17,9 +15,7 @@ module.exports = (app) => {
                 if (err) {
                     console.log ('err' + data.length);
                     console.log('err' + err.result.nInserted)
-
                     res.json({
-                        
                         scraped: data.length,
                         stored: err.result.nInserted
                         })
@@ -163,7 +159,7 @@ module.exports = (app) => {
     })
 })
 //delete note
-app.delete("/api/notes/:n_id",(req, res)=>{
+app.delete("/api/note/delete/:n_id",(req, res)=>{
     let p_Id= req.body.p_id;
     let n_Id =req.params.n_id;
     db.Note.remove({_id: n_Id})
@@ -179,17 +175,4 @@ app.delete("/api/notes/:n_id",(req, res)=>{
     })
 
 })
-
-//show all
-//  app.get("*",(req, res)=>{
-     
-// db.Post.find({})
-//     .then((dbPost)=>{
-//         res.json(dbPost)
-//      })
-//     .catch (function(err) {
-//        res.json(err);
-// })
-
-// })
 }

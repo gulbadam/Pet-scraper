@@ -1,7 +1,7 @@
 const db = require ('../models');
 module.exports=(app)=>{
     app.get("/", (req, res)=>{
-        res.render("home", { head: "home" })
+        res.render("home", { head: "Welcoome" })
     });
     app.get("/kittens", (req, res)=>{
         db.Post.find({ category: "kitten" }, [], { sort: { date: -1 } } )

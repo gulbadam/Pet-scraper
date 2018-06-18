@@ -6,14 +6,52 @@
         <a class="navbar-item" href="/">
             <img id="logo" src="/assets/images/images.jpeg" alt="cat&dog" width="100" height="55" >
         </a>
-        <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-            <span></span>
-            <span></span>
-            <span></span>
+    
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+        {{!-- <div id="navbarExampleTransparentExample" class="navbar-menu"> --}}
+            <div class="navbar-start">
+                <div class="navbar-item">
+                    <a class="button is-info" id="scrape-kitten">Scrape Kittens</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="button is-info" id="scrape-puppy">Scrape Puppies</a>
+                </div>
+        
+            </div>
+            <div class="navbar-item">
+                <div>
+                    <p class="title is-2 is-spaced" id="head">{{head}}</p>
+                </div>
+            </div>
+        
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <a class="button is-primary" href="/saved" id="saved">Saved</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="button is-link" href="/kittens" id="kittens">Kittens</a>
+                </div>
+                <div class="navbar-item">
+                    <a class="button is-link" href="/puppies" id="puppies">Puppies</a>
+                </div>
+                {{!--
+                <div>
+                    <a class="navbar-item" href="/">
+                        <img id="logo" src="/assets/images/imagesflip.jpeg" alt="cat&dog" width="100" height="55">
+                    </a>
+                </div> --}}
+            </div>
         </div>
+    {{!-- </div> --}}
     </div>
 
-    <div id="navbarExampleTransparentExample" class="navbar-menu">
+    {{!-- <div id="navbarExampleTransparentExample" class="navbar-menu">
         <div class="navbar-start">
             <div class="navbar-item">
             <a class="button is-info" id="scrape-kitten">Scrape Kittens</a>
@@ -25,9 +63,9 @@
         </div>
         <div class="navbar-item">
             <div> <p class="title is-2 is-spaced" id="head">{{head}}</p></div>
-        </div>
+        {{!-- </div> --}}
 
-        <div class="navbar-end">
+        {{!-- <div class="navbar-end">
         <div class="navbar-item">
             <a class="button is-primary" href="/saved" id="saved">Saved</a>
         </div>
@@ -36,11 +74,13 @@
         </div>
         <div class="navbar-item">
             <a class="button is-link" href="/puppies" id="puppies">Puppies</a>
-        </div>
+        </div> --}}
+        {{!-- <div>
         <a class="navbar-item" href="/">
             <img id="logo" src="/assets/images/imagesflip.jpeg" alt="cat&dog" width="100" height="55">
-        </a>
-        </div>
-    </div>
+        </a> 
+        </div> --}}
+        {{!-- </div>
+    </div> --}} 
 </nav>
 </div>
